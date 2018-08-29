@@ -1,3 +1,50 @@
+# Exit Intent Popup Ne İşe Yarar?
+Kısaca tanımlamak gerekirse, müşteriler web sitesinden ayrılmak istediğinde ortaya çıkan ve sitede kalıp, alışverişe devam etmeleri için onlara bir değer sunarak motivasyon sağlayan, çıkış niyeti açılır pop-uplardır. 
+
+## Gerekli JS kodları
+Bu kod snippet'inde mouse yukarı doğru kayarken sitenizin sınırlarından çıktığında oluşturacağımız modal'ı açmasını söylüyoruz. 
+
+Not: sessionStorage ile kullanıcıya bir oturum boyunca yalnızca bir kez göstermesi gerektiğini belirtiyoruz.
+
+
+    <script>document.addEventListener("mouseleave", function(e){
+        if( e.clientY < 0 )
+        {
+            if(Number(sessionStorage.exit_init) != 1){
+                sessionStorage.exit_init = 1;
+                $("#exampleModal").modal()
+            }
+
+        }
+    }, false);</script>
+    
+## Modal
+Standart bootstrap modal 'ı kullanarak örnek bir görünüm oluşturdum.
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Exit Intent Example</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
 # [Start Bootstrap - Clean Blog](https://startbootstrap.com/template-overviews/clean-blog/)
 
 [Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/) is a stylish, responsive blog theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features a blog homepage, about page, contact page, and an example post page along with a working PHP contact form.
